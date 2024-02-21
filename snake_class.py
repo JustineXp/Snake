@@ -1,6 +1,10 @@
 from turtle import Turtle
 CO_ORDINATES = [(0, 0), (-20, 0), (-40, 0)]
 MOVE_DISTANCE = 20
+LEFT = 0
+RIGHT = 180
+UP = 270
+DOWN = 90
 
 
 class Snake:
@@ -12,7 +16,7 @@ class Snake:
     def create_turtles(self):
         for i in CO_ORDINATES:
             turtle_name = f'turtle_{CO_ORDINATES[0][0] +1}'
-            turtle_name = Turtle(shape='square')
+            turtle_name = Turtle(shape='circle')
             turtle_name.color('white')
             turtle_name.penup()
             turtle_name.goto(i)
@@ -25,17 +29,21 @@ class Snake:
             self.turtles[each_turtle].goto(new_x, new_y)
         self.turtles[0].back(MOVE_DISTANCE)
 
-    def turn_left(self):
-        ...
+    def turn_right(self):
+        if self.turtle.heading() != LEFT:
+            self.turtle.seth(RIGHT)
 
     def turn_up(self):
-        self.turtle.seth(90)
+        if self.turtle.heading() != DOWN:
+            self.turtle.seth(UP)
 
-    def turn_right(self):
-        ...
+    def turn_left(self):
+        if self.turtle.heading() != RIGHT:
+            self.turtle.seth(LEFT)
 
     def turn_down(self):
-        self.turtle.seth(180)
+        if self.turtle.heading() != UP:
+            self.turtle.seth(DOWN)
 
     def turn_snake(self, screen):
         screen.onkey(key='Up', fun=self.turn_up)
