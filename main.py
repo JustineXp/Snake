@@ -1,5 +1,6 @@
 from turtle import Screen
 from snake_class import Snake
+from food import Food
 import time
 X_Y_DIMENSION = 600
 
@@ -11,6 +12,7 @@ screen.tracer(0)
 screen.listen()
 
 snake = Snake()
+food = Food()
 
 game_is_on = True
 while game_is_on:
@@ -18,6 +20,9 @@ while game_is_on:
     time.sleep(0.2)
     snake.move()
     snake.turn_snake(screen)
+
+    if snake.turtle.distance(food) < 15:
+        food.refresh()
 
 
 screen.exitonclick()
