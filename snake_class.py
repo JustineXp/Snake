@@ -1,10 +1,10 @@
 from turtle import Turtle
 CO_ORDINATES = [(0, 0), (-20, 0), (-40, 0)]
 MOVE_DISTANCE = 20
-LEFT = 0
-RIGHT = 180
-UP = 270
-DOWN = 90
+LEFT = 180
+RIGHT = 0
+UP = 90
+DOWN = 270
 
 
 class Snake:
@@ -27,7 +27,7 @@ class Snake:
             new_x = self.turtles[each_turtle-1].xcor()
             new_y = self.turtles[each_turtle-1].ycor()
             self.turtles[each_turtle].goto(new_x, new_y)
-        self.turtles[0].back(MOVE_DISTANCE)
+        self.turtles[0].forward(MOVE_DISTANCE)
 
     def turn_right(self):
         if self.turtle.heading() != LEFT:
@@ -46,6 +46,7 @@ class Snake:
             self.turtle.seth(DOWN)
 
     def turn_snake(self, screen):
+        self.move()
         screen.onkey(key='Up', fun=self.turn_up)
         screen.onkey(key='Down', fun=self.turn_down)
         screen.onkey(key='Left', fun=self.turn_left)
