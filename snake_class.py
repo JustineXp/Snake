@@ -14,13 +14,19 @@ class Snake:
         self.turtle = self.turtles[0]
 
     def create_turtles(self):
-        for i in CO_ORDINATES:
-            turtle_name = f'turtle_{CO_ORDINATES[0][0] +1}'
-            turtle_name = Turtle(shape='circle')
-            turtle_name.color('white')
-            turtle_name.penup()
-            turtle_name.goto(i)
-            self.turtles.append(turtle_name)
+        for co_ords in CO_ORDINATES:
+            self.create_turtle(co_ords)
+
+    def create_turtle(self, co_ords):
+        turtle_name = f'turtle_{CO_ORDINATES[0][0] +1}'
+        turtle_name = Turtle(shape='circle')
+        turtle_name.color('white')
+        turtle_name.penup()
+        turtle_name.goto(co_ords)
+        self.turtles.append(turtle_name)
+
+    def add_extra_piece(self):
+        self.create_turtle(self.turtles[-1].position())
 
     def move(self):
         for each_turtle in range((len(self.turtles)-1), 0, -1):
