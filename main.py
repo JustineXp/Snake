@@ -24,6 +24,7 @@ while game_is_on:
 
     if snake.turtle.distance(food) < 15:
         food.refresh()
+        snake.add_extra_piece()
         score.updatescore()
 
     if snake.turtle.xcor() > 280 or snake.turtle.xcor() < -280 or snake.turtle.ycor() > 280 or snake.turtle.ycor() < -280:
