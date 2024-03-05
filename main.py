@@ -31,5 +31,12 @@ while game_is_on:
         game_is_on = False
         score.end_game()
 
+    for segment in snake.turtles:
+        if segment == snake.turtle:
+            pass
+        elif snake.turtle.distance(segment) < 10:
+            game_is_on = False
+            score.end_game()
+
 
 screen.exitonclick()
