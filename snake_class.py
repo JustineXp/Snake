@@ -5,6 +5,8 @@ LEFT = 180
 RIGHT = 0
 UP = 90
 DOWN = 270
+HEAD_COLOR = 'red'
+BODY_COLOR = 'white'
 
 
 class Snake:
@@ -20,7 +22,10 @@ class Snake:
     def create_turtle(self, co_ords):
         turtle_name = f'turtle_{CO_ORDINATES[0][0] +1}'
         turtle_name = Turtle(shape='circle')
-        turtle_name.color('white')
+        if co_ords == CO_ORDINATES[0]:
+            turtle_name.color(HEAD_COLOR)
+        else:
+            turtle_name.color(BODY_COLOR)
         turtle_name.penup()
         turtle_name.goto(co_ords)
         self.turtles.append(turtle_name)
